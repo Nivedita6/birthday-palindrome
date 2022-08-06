@@ -23,7 +23,7 @@ function convertDateToStr(date){
         dateStr.date = '0' + date.day;
     }
     else{
-        dateStr.day = date.day.toString();
+        dateStr.date = date.day.toString();
     }
 
     if(date.month < 10){
