@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    background-image: url("birthday.jpg");
+    font-size: xx-large;
+    
+    
+}
+
+.lighter-bg{
+    background-color: #ffffff;
+    opacity: 0.8;
+    margin: 9rem 10rem;
+    color: rgb(173, 103, 173);
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
+input, button{
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    font-size: large;
+    color: rgb(181, 60, 181);
+    font-weight: bold;
+    border-radius: 0.7rem;
+    border-width: 0.2rem;
+    border-color: rgb(173, 103, 173);
+}
+
+
+

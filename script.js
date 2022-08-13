@@ -134,9 +134,12 @@ function getNextPalindromeDate(date){
     return [ctr, nextDate];
 }
 
+
+
 var dateInput = document.querySelector("#bday-input");
 var output = document.querySelector("#result");
 var showBtn = document.querySelector("#show-button");
+
 
 function clickHandler(){
     var bdayStr = dateInput.value;
@@ -156,11 +159,18 @@ function clickHandler(){
         }
         else{
             var [ctr, nextDate] = getNextPalindromeDate(date);
-            output.innerText = "The next palindrome date is in " + nextDate.day + "-" + nextDate.month + "-" + nextDate.year + ". You missed it by  " + ctr + " days."
-        }
+            output.innerText = "The next palindrome date is in " + nextDate.day + "-" + nextDate.month + "-" + nextDate.year + ". You missed it by  " + ctr + checkDaysOrDay(ctr);
+         }
 
     }
 }
 
+function checkDaysOrDay(ctr){
+  return(ctr > 1 ? ' days' : ' day');
+}
+
+
+
 showBtn.addEventListener("click", clickHandler);
+
 
