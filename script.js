@@ -134,11 +134,68 @@ function getNextPalindromeDate(date){
     return [ctr, nextDate];
 }
 
+function getPreviousDate(date){
+    var day = date.day - 1;
+    var month = date.month;
+    var year = date.year;
+
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if(isLeapYear(year)){
+        daysInMonth[1] = 29;
+        if(day === 0){
+            month--;
+            if(month === 0){
+                month = 12;
+                year--;
+                day = daysInMonth[month - 1] - day;
+            }else{
+                day = daysInMonth[month - 1] - day;
+            }
+        }
+    }
+
+    if(day === 0){
+        month--;
+        if(month ===0){
+            month = 12;
+            year--;
+            day = daysInMonth[month - 1] - day;
+        }else{
+            day = daysInMonth[month - 1] - day;
+        }
+    }
+
+    return{
+        day: day,
+        month: month,
+        year: year
+    };
+}
+
+function getPreviousPalindromeDate(date){
+    ctr = 0;
+    let prevDate = getPreviousDate(date);
+
+    while(1){ //infinite loop
+        ctr++;
+        var checkPalindrome = checkPalindromeForAllDateFormats(prevDate);
+        
+        if(checkPalindrome){
+            break;
+        }
+        prevDate = getPreviousDate(prevDate);
+    }
+
+    return [ctr, prevDate];
+}
+
 
 
 var dateInput = document.querySelector("#bday-input");
 var output = document.querySelector("#result");
 var showBtn = document.querySelector("#show-button");
+var outputTwo = document.querySelector("#result2");
 
 
 function clickHandler(){
@@ -160,7 +217,11 @@ function clickHandler(){
         else{
             var [ctr, nextDate] = getNextPalindromeDate(date);
             output.innerText = "The next palindrome date is in " + nextDate.day + "-" + nextDate.month + "-" + nextDate.year + ". You missed it by  " + ctr + checkDaysOrDay(ctr);
-         }
+            
+            var [ctr, prevDate] = getPreviousPalindromeDate(date);
+            outputTwo.innerText = "The previous palindrome date is  " + prevDate.day + "-" + prevDate.month + "-" + prevDate.year + ", it was  " + ctr + checkDaysOrDay(ctr) + " ago";
+        
+        }
 
     }
 }
