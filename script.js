@@ -210,6 +210,9 @@ function clickHandler(){
             year: Number(listOfDate[0])
         }; 
 
+        output.innerText = '';
+        outputTwo.innerText = '';
+
         var isPalindrome = checkPalindromeForAllDateFormats(date);
         if(isPalindrome){
             output.innerText = "Yay! your birthday is a palindrome"
